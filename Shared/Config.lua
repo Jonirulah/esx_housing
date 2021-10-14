@@ -1,4 +1,4 @@
-
+Config = {} or Config
 -- Housing Config
 Config.ResellPrice = 60 -- 60% of price paid
 
