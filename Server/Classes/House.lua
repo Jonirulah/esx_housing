@@ -16,9 +16,9 @@ end
 
 CheckNegativeNumber = function(number)
     if number < 0 then
-        return true
+        return 0
     else
-        return false
+        return number
     end
 end
 
