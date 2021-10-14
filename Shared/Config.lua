@@ -1,6 +1,9 @@
 Config = {} or Config
+
 -- Housing Config
 Config.ResellPrice = 60 -- 60% of price paid
+Config.SyncInterval = 3 -- In minutes
+
 
 -- House Pricing   
 Config.MaxHousesperUser = 2
