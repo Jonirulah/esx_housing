@@ -3,18 +3,16 @@ lua54 "yes"
 game 'gta5'
 description 'ESX Housing'
 version 'legacy'
-shared_script '@es_extended/imports.lua'
+shared_scripts {'@es_extended/imports.lua', 'Shared/Config.lua'}
 
 server_scripts {
 	'@es_extended/locale.lua',
-	'config.lua',
-	'server/main.lua'
+	'Server/SMain.lua'
 }
 
 client_scripts {
 	'@es_extended/locale.lua',
-	'config.lua',
-	'client/main.lua'
+	'Client/main.lua'
 }
 
 dependencies {
