@@ -30,7 +30,7 @@ CreateHouse = function(data)
     self.money = json.decode(data.money)
     self.black_money = json.decode(data.black_money)
     self.keys = json.decode(data.key)
-    self.owner = json.decode(data.owner)
+    self.owner = data.owner
     self.updateDB = false
 
     -- Add house keys to users
@@ -51,7 +51,6 @@ CreateHouse = function(data)
         end
         CheckCallback(found, cb)
         self.updateDB = true
-
     end
 
     -- Add Money to house storage
@@ -66,7 +65,6 @@ CreateHouse = function(data)
         end
         CheckCallback(true, cb)
         self.updateDB = true
-
     end
 
     -- Remove Money to house storage
@@ -81,8 +79,6 @@ CreateHouse = function(data)
         CheckCallback(true, cb)
         self.updateDB = true
     end
-
-
 
     return self
 end

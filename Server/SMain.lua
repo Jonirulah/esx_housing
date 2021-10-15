@@ -1,6 +1,7 @@
 houses = {}
 loaded = promise.new()
 
+-- Load ESX & DB
 Citizen.CreateThread(function()
     TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
     while MySQL == nil or ESX == nil do
@@ -16,7 +17,6 @@ LoadDatabase = function()
     local result = MySQL.Sync.fetchAll('SELECT * FROM housing_data')
     for k,v in pairs(result) do
         houses[k] = CreateHouse(result[k])
-        GlobalState["house-" .. k] = houses[k]
     end
     loaded:resolve()
 end
@@ -38,6 +38,10 @@ FlashDatabase = function()
         end
     end
 end
+
+ESX.RegisterServerCallback('esx_housing:ReceiveData', function(source, cb)
+    cb(houses)
+end)
 
 -- Thread to Sync Changes
 CreateThread(function()

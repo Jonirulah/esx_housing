@@ -14,7 +14,9 @@ server_scripts {
 
 client_scripts {
 	'@es_extended/locale.lua',
-	'Client/main.lua'
+	'Client/Classes/House.lua',
+	'Shared/Locale.lua',
+	'Client/CMain.lua'
 }
 
 dependencies {
