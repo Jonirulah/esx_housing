@@ -1,7 +1,7 @@
 Config = {} or Config
 
 Config.Locale = 'es'
-Config.Debug = true
+Config.Debug = false
 
 Config.Marker = {
     Type = 1,
@@ -48,15 +48,7 @@ Config.Points = {
         storage = vector3(90.76, 3752.36, 39.76),
         exit = vector3(93.4, 3750.72, 39.76), 
     }
-
 }
-
--- patera -> low cost
--- mediumapart -> apartment_lowend
--- eclipserojo -> apartment_midend
--- eclipse -> apartment_midend
--- motel_casa -> motel
--- caravana -> camper
 
 -- House Pricing   
 Config.MaxHousesperUser = 2 -- Limit of houses able to buy from a single user

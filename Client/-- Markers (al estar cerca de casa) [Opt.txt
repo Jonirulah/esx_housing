@@ -1,0 +1,5 @@
+-- Markers (al estar cerca de casa) [Optimizadismo]
+-- Notificaciones correctas al estar cerca de casas tuyas o no tuyas
+-- /viewhouses, salen todas las casas procesadas client-side
+-- Sincronización de JSON (Tabla controlada) con MySQL (server-side) [0 queries on the go]
+-- 
