@@ -1,4 +1,4 @@
-houses = {}
+ houses = {}
 loaded = promise.new()
 
 -- Load ESX & DB
@@ -273,14 +273,17 @@ RegisterNetEvent('esx_housing:addKeys', function(house, id)
     local xPlayer = ESX.GetPlayerFromId(xSource)
     local identifier = xPlayer.getIdentifier()
     if houses[house].owner == identifier then
-        if Config.Debug and (Config.DebugLevel == 0 or Config.DebugLevel == 2) then
-            print('Giving keys to player ' .. id .. ' on house ' .. house.id)
+        if xPlayer.getAccount('bank').money >= tonumber(Config.KeyResetPrice) then
+            xPlayer.removeAccountMoney('bank', tonumber(Config.KeyResetPrice))
+            if Config.Debug and (Config.DebugLevel == 0 or Config.DebugLevel == 2) then
+                print('Giving keys to player ' .. id .. ' on house ' .. house.id)
+            end
+            local zPlayer = ESX.GetPlayerFromId(id)
+            local zIdentifier = zPlayer.getIdentifier()
+            houses[house].addKeys(zIdentifier)
         end
-        local zPlayer = ESX.GetPlayerFromId(id)
-        local zIdentifier = zPlayer.getIdentifier()
-        houses[house].addKeys(zIdentifier)
+        TriggerClientEvent('esx_housing:Sync', -1, houses[house])
     end
-    TriggerClientEvent('esx_housing:Sync', -1, houses[house])
 end)
 
 RegisterNetEvent('esx_housing:playerEnterHouse', function(houseId)
