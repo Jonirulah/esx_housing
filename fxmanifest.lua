@@ -3,7 +3,7 @@ lua54 "yes"
 game 'gta5'
 description 'ESX Housing'
 version 'legacy'
-author 'Jonirulah'
+author 'Jonirulah y juanjodev'
 shared_scripts {'@es_extended/imports.lua', 'Shared/Config.lua'}
 
 ui_page 'Client/Assets/Sound.html'
