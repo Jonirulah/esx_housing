@@ -1,7 +1,11 @@
 Config = {} or Config
 
 Config.Locale = 'es'
-Config.Debug = false
+Config.Debug = true
+-- Debug Level 0 enables debug sv-side
+-- Debug level 1 enables debug cl-side
+-- Debug level 2 enables debug cl-side & sv-side
+Config.DebugLevel = 0
 
 Config.Marker = {
     Type = 1,
@@ -10,9 +14,10 @@ Config.Marker = {
 }
 
 -- Housing Config
-Config.DrawDistance = 15 -- Distance to start drawing markers
-Config.ResellPrice = 60 -- 60% of price paid
-Config.SyncInterval = 5 -- In minutes
+Config.OpenMenuKey = "F5" -- Key
+Config.DrawDistance = 10 -- Distance to start drawing markers
+Config.ResellPrice = 0.6 -- 60% of price paid
+Config.DBSyncInterval = 1 -- In minutes, when changes should be flashed to the database.
 Config.Points = {
     lowcost = {
         storage = vector3(265.88, -999.44, -100.0),
@@ -41,19 +46,47 @@ Config.Points = {
 
     motel = {
         storage = vector3(151.32, -1003.32, -100.0),
-        exit = vector3(151.4, -1007.28, -99.8), 
+        exit = vector3(151.4, -1007.28, -100.0), 
     },
-
-    camper = {
-        storage = vector3(90.76, 3752.36, 39.76),
-        exit = vector3(93.4, 3750.72, 39.76), 
-    }
 }
 
 -- House Pricing   
 Config.MaxHousesperUser = 2 -- Limit of houses able to buy from a single user
+Config.MaxKeysperHouse = 5 -- Limit of keys per house
 
 -- Key Pricing
 Config.MaxKeysperHouse = 5 -- Maximum keys allowed to be created
-Config.KeySwappingPrice = 1000 -- Price to change the lock and reset 
+Config.KeyResetPrice = 1000 -- Price to change the lock and reset 
 Config.KeyCreationPrice = 500 -- Price for keys to be made
+
+-- Sleep Config
+Config.SleepEnabled = true -- Player will respawn in his house on login if he disconnected inside
+Config.KickPlayersWithNoKeys = true -- Players that no longer has keys will be kicked out of the house to avoid robbery
+
+-- Automatic House Removal
+Config.HouseRemoval = true
+Config.HouseRemovalTypes = { -- hours
+    lowcost = {
+        maxTime = 240 -- 10d
+    },
+
+    mansion = {
+        maxTime = 360 -- 15d
+    },
+
+    apartment_lowend = {
+        maxTime = 240 -- 10d
+    },
+
+    apartment_midend = {
+        maxTime = 360 -- 15d
+    },
+
+    small_mansion = {
+        maxTime = 360 -- 15d
+    },
+
+    motel = {
+        maxTime = 168 -- 7d
+    },  
+}
