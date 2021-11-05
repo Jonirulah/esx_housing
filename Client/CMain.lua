@@ -77,6 +77,7 @@ InsideHouse = function(house_ins, last_coords)
                 Wait(0)
                 for k,v in pairs(Config.Points[house_ins.data.prop]) do
                     local distance = #(coords - v)
+					--cherry daddy uwu onichan yamete senpai was here
                     if distance < 5 then
                         DrawMarker(Config.Marker.Type, v, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.Marker.Size.x, Config.Marker.Size.y, Config.Marker.Size.z, Config.Marker.Color.r, 255, Config.Marker.Color.b, 100, false, true, 2, false, false, false, false)      
                         if distance < 1.5 then   
