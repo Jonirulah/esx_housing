@@ -1,4 +1,4 @@
- houses = {}
+houses = {}
 loaded = promise.new()
 
 -- Load ESX & DB
@@ -68,7 +68,8 @@ end)
 ESX.RegisterServerCallback('esx_housing:SellHouse', function(source, cb, house)
     local xSource = source
     local xPlayer = ESX.GetPlayerFromId(xSource)
-     if houses[house].owner == xPlayer.getIdentifier() then
+    print(houses[house].owner, xPlayer.getIdentifier())
+    if houses[house].owner == xPlayer.getIdentifier() then
         -- Kick instanced players from house
         houses[house].getInstancedMembers(function(license)
             local xPlayer = ESX.GetPlayerFromIdentifier(license)
@@ -79,8 +80,8 @@ ESX.RegisterServerCallback('esx_housing:SellHouse', function(source, cb, house)
             end
             xPlayer.triggerEvent('esx_housing:leaveHouse')
         end, 'license')
-        TriggerClientEvent('esx_housing:Sync', -1, houses[house])
         houses[house].reset() 
+        TriggerClientEvent('esx_housing:Sync', -1, houses[house])
         return cb(true)
     end    
 end)

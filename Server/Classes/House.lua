@@ -169,14 +169,14 @@ CreateHouse = function(data)
     end
 
     self.reset = function()
-        houses[house].storage = {}
-        houses[house].keys = {}
-        houses[house].owner = ''
-        houses[house].money = 0
-        houses[house].black_money = 0
-        houses[house].extradata.lastTimestamp = {}
-        houses[house].extradata.instancedMembers = {}        
-        houses[house].updateDB = true
+        self.storage = {}
+        self.keys = {}
+        self.owner = ''
+        self.money = 0
+        self.black_money = 0
+        self.extradata.lastTimestamp = {}
+        self.extradata.instancedMembers = {}        
+        self.updateDB = true
     end
     
     return self
