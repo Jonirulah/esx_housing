@@ -9,6 +9,5 @@
 - Adminstration has a house creating menu.
 - Houses can get removed automatically when they are unused for more time than allowed on the config.
 
-[THINGS YOU SHOULD KNOW]
-- You should add some crosschecks on triggers, players with cheats should be able to get to your house using the right trigger, so you should check if the one triggering the event is the owner or someone with keys.
+
 - No logging is provided, you should add yours wherever you want to get things logged.
