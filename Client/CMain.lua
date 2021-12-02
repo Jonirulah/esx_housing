@@ -254,8 +254,20 @@ RegisterNetEvent('esx_housing:Ring', function(src)
 end)
 
 RegisterNetEvent('esx_housing:enterHouse', function(house_id)
+    local PlayerData = ESX.GetPlayerData()
+    local identifier = PlayerData.identifier
     if Houses[house_id] then
-        InsideHouse(Houses[house_id], Houses[house_id].doorpos)
+        if Houses[house_id].owned then
+            InsideHouse(Houses[house_id], Houses[house_id].doorpos)
+            return
+        end
+
+        for r,s in pairs(Houses[house_id].keys) do
+            if s == identifier then
+                InsideHouse(Houses[house_id], Houses[house_id].doorpos)
+                return
+            end
+        end
     end
 end)
 
