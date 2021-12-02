@@ -1,5 +1,8 @@
 # esx_housing
 
+Made it for ESX Legacy
+This script hasn't been tested on previous versions of ESX, so compatibility is not assured.
+
 [FEATURES]
 - Players are able to disconnect in their house, at entering the server the house where he stayed in will load automatically.
 - Highly optimized (0.01ms) (client), in server-side the database is loaded on startup, so the script uses the cached JSON for all internal queries.
