@@ -55,13 +55,12 @@ Config.MaxHousesperUser = 2 -- Limit of houses able to buy from a single user
 Config.MaxKeysperHouse = 5 -- Limit of keys per house
 
 -- Key Pricing
-Config.MaxKeysperHouse = 5 -- Maximum keys allowed to be created
 Config.KeyResetPrice = 1000 -- Price to change the lock and reset 
 Config.KeyCreationPrice = 500 -- Price for keys to be made
 
 -- Sleep Config
 Config.SleepEnabled = true -- Player will respawn in his house on login if he disconnected inside
-Config.KickPlayersWithNoKeys = true -- Players that no longer has keys will be kicked out of the house to avoid robbery
+Config.KickPlayersWithNoKeys = true -- Players that no longer has keys and disconnects in house will be kicked out of the house on login to avoid robbery
 
 -- Automatic House Removal
 Config.HouseRemoval = true

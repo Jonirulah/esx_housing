@@ -145,7 +145,7 @@ CreateThread(function()
                         -- Enter to the house
                         if IsControlJustPressed(0,38) then
                             -- While inside house Thread
-                            InsideHouse(house_active, coords)
+                            InsideHouse(house_active, Houses[house_active].doorpos)
                         end                        
                     elseif house_active.owner == ('' or "") or not house_active.owner then
                         -- Check Houses
@@ -179,19 +179,20 @@ CreateThread(function()
         Wait(0)
         local coords = GetEntityCoords(PlayerPedId())
         for k,v in pairs(Houses) do
-            if Houses[k].getdistance(coords) <= Config.DrawDistance then
-                if house_active and Houses[k].getdistance(coords) < house_active.getdistance(coords) then
-                    if Config.Debug and (Config.DebugLevel >= 1) then
-                        print('overwriting ' .. 'house id .. ' .. Houses[k].id .. 'due to being closer than  ' .. house_active.id .. ' Distance to new house: ' .. Houses[k].getdistance(coords) .. ' Distance to old house ' .. house_active.getdistance(coords))
+            if not house_inside then
+                if Houses[k].getdistance(coords) <= Config.DrawDistance then
+                    if house_active and Houses[k].getdistance(coords) < house_active.getdistance(coords) then
+                        if Config.Debug and (Config.DebugLevel >= 1) then
+                            print('overwriting ' .. 'house id .. ' .. Houses[k].id .. 'due to being closer than  ' .. house_active.id .. ' Distance to new house: ' .. Houses[k].getdistance(coords) .. ' Distance to old house ' .. house_active.getdistance(coords))
+                        end
+                        house_active = Houses[k]
+
+                    elseif not house_active then
+                        house_active = Houses[k]
                     end
-                    house_active = Houses[k]
-                    requested = false
 
-                elseif not house_active then
-                    house_active = Houses[k]
+                    close = true
                 end
-
-                close = true
             end
         end
 
@@ -275,6 +276,7 @@ RegisterNetEvent('esx_housing:leaveHouse', function()
     -- Event to kick players out of the house in case of sell
     ESX.Game.Teleport(PlayerPedId(), house_inside.doorpos)
     house_inside = nil
+    house_ins = nil
 end)
 
 -- Commands
@@ -291,6 +293,7 @@ RegisterCommand("createhouse", function()
         end
     end, '')
 end)
+
 
 RegisterCommand('viewhouses', function()
     if not viewing then

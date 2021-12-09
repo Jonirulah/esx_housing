@@ -4,6 +4,7 @@ game 'gta5'
 description 'ESX Housing'
 version 'legacy'
 author 'Jonirulah'
+version '1.0.2'
 shared_scripts {'@es_extended/imports.lua', 'Shared/Config.lua'}
 
 ui_page 'Client/Assets/Sound.html'
