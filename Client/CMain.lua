@@ -145,7 +145,7 @@ CreateThread(function()
                         -- Enter to the house
                         if IsControlJustPressed(0,38) then
                             -- While inside house Thread
-                            InsideHouse(house_active, Houses[house_active].doorpos)
+                            InsideHouse(house_active, house_active.doorpos)
                         end                        
                     elseif house_active.owner == ('' or "") or not house_active.owner then
                         -- Check Houses
