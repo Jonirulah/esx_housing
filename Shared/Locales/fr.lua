@@ -14,9 +14,9 @@ Locales['fr'] = {
 
     -- Buy Menu - Notification
     ['view_house_info_menu'] = 'Information de la maison',
-    ['house_id_menu'] = 'ID de la maison : ',
-    ['house_price_menu'] = 'Prix de la maison : ',
-    ['interior_menu'] = 'Type de maison : ',
+    ['house_id_menu'] = 'ID : ',
+    ['house_price_menu'] = 'Prix : ',
+    ['interior_menu'] = 'Type : ',
 
     -- Buy Menu - Purchase
     ['about_to_buy_house_menu'] = 'Acheter la maison ',
@@ -65,7 +65,7 @@ Locales['fr'] = {
     -- House Creation Menu (for admins)
     ['house_builder'] = 'Création de maison',
     ['interior_type'] = 'Type de maison : ',
-    ['door_position'] = 'Coordonnées de la porte : ',
+    ['door_position'] = 'Porte : ',
     ['house_price'] = 'Prix de la maison: ',
     ['create_house'] = 'Confirmer la création de la maison',
     ['house_created'] = 'Vous avez créer la maison '
