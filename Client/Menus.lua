@@ -343,20 +343,21 @@ HouseMaker = function(cur_data)
                     title = Locales[Config.Locale]["house_builder"],
                     align = "bottom-right",
                     elements = elements
-                    }, function(data, menu)
-                        cur_data["interior_type"] = data.current.value
-                        ESX.UI.Menu.CloseAll()
+                    }, function(data2, menu2)
+                        cur_data["interior_type"] = data2.current.value
+                        menu.close()
+                        menu2.close()
                         HouseMaker(cur_data)
 
-                    end, function(data, menu)
-                        ESX.UI.Menu.CloseAll()
+                    end, function(data2, menu2)
+                        menu2.close()
                     end)
 
             elseif data.current.value == "door_coords" then
                 local coords = GetEntityCoords(PlayerPedId())
                 local coords = vector3(coords.x, coords.y, coords.z)
                 current_data["door_coords"] = coords
-                ESX.UI.Menu.CloseAll()
+                menu.close()
                 HouseMaker(cur_data)
 
             elseif data.current.value == "house_price" then
@@ -366,11 +367,12 @@ HouseMaker = function(cur_data)
                     elements = elements
                     }, function(data2, menu2)
                         cur_data["house_price"] = tonumber(data2.value)
-                        ESX.UI.Menu.CloseAll()
+                        menu.close()
+                        menu2.close()
                         HouseMaker(cur_data)
-                    end, function(data, menu)
-                        ESX.UI.Menu.CloseAll()
-                    end)
+                    end, function(data2, menu2)
+                        menu2.close()
+                end)
 
             elseif data.current.value == "create_house" then
                 for k,v in pairs(cur_data) do
@@ -381,13 +383,11 @@ HouseMaker = function(cur_data)
                         return
                     end
                 end
-                ESX.UI.Menu.CloseAll()
+                menu.close()
                 ESX.TriggerServerCallback("esx_housing:NewHouse", function(data)
                     if data then
                         ESX.ShowNotification(Locales[Config.Locale]["house_created"] .. "ID" .. data.id .. "<br>" .. Locales[Config.Locale]["house_price_menu"] .. data.data.price .. "$")
                     end
-                    ESX.UI.Menu.CloseAll()
-
                 end, cur_data)
             end
     end)
