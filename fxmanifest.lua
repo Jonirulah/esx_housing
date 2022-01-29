@@ -5,14 +5,15 @@ description 'ESX Housing'
 version 'legacy'
 author 'Jonirulah'
 version '1.0.2'
-shared_scripts {'@es_extended/imports.lua', 'Shared/Config.lua'}
+shared_scripts {'Shared/Config.lua'}
+-- shared_scripts {'@es_extended/imports.lua', 'Shared/Config.lua'}
 
 ui_page 'Client/Assets/Sound.html'
 
 server_scripts {
 	'@mysql-async/lib/MySQL.lua',
 	'@es_extended/locale.lua',
-	'Shared/Locale.lua',
+	'Shared/Locales/*.lua',
 	'Server/Classes/House.lua',
 	'Server/SMain.lua'
 }
@@ -20,7 +21,7 @@ server_scripts {
 client_scripts {
 	'@es_extended/locale.lua',
 	'Client/Classes/House.lua',
-	'Shared/Locale.lua',
+	'Shared/Locales/*.lua',
 	'Client/CMain.lua',
 	'Client/Menus.lua',
 }
