@@ -1,9 +1,10 @@
 houses = {}
 loaded = promise.new()
+ESX = nil
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 -- Load ESX & DB
 CreateThread(function()
-    TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
     while MySQL == nil or ESX == nil do
         Wait(0)
     end
