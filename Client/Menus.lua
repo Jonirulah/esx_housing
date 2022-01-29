@@ -264,7 +264,7 @@ ActionMenu = function(data1, house, action)
     item = data1.current.item
     if data1.current.type == "item" then
         ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'house_menu' .. house.id .. 'deposit_value', {
-        title = Locales[Config.Locale["how_much_money"]],
+        title = Locales[Config.Locale]["how_much_money"],
         align = "middle",
         elements = ''
         }, function(data2, menu2)
@@ -289,7 +289,7 @@ ActionMenu = function(data1, house, action)
         end)
     elseif data1.current.type == "account" then
         ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'house_menu' .. house.id .. 'deposit_value', {
-            title = Locales[Config.Locale["how_much_money"]],
+            title = Locales[Config.Locale]["how_much_money"],
             align = "middle",
             elements = elements
             }, function(data2, menu2)
@@ -324,7 +324,7 @@ end
 
 HouseMaker = function(cur_data)
     ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'house_builder', {
-        title = Locales[Config.Locale["house_builder"]],
+        title = Locales[Config.Locale]["house_builder"],
         align = "bottom-right",
         elements = {
         {label = Locales[Config.Locale]['interior_type'] .. cur_data["interior_type"], value = 'interior_type', data=cur_data["interior_type"]},
@@ -340,7 +340,7 @@ HouseMaker = function(cur_data)
                 end
 
                 ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'house_builder_int', {
-                    title = Locales[Config.Locale["house_builder"]],
+                    title = Locales[Config.Locale]["house_builder"],
                     align = "bottom-right",
                     elements = elements
                     }, function(data, menu)
@@ -361,7 +361,7 @@ HouseMaker = function(cur_data)
 
             elseif data.current.value == "house_price" then
                 ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'house_builder_price', {
-                    title = Locales[Config.Locale["how_much_money"]],
+                    title = Locales[Config.Locale]["how_much_money"],
                     align = "middle",
                     elements = elements
                     }, function(data2, menu2)
