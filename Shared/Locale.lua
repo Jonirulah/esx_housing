@@ -1,5 +1,5 @@
 Locales['es'] = {
-    
+
     ['enter_house'] = 'Pulsa ~INPUT_CONTEXT~ para entrar a tu casa',
     ['view_house_info'] = 'Pulsa ~INPUT_CONTEXT~ para ver la información de esta casa',
     ['exit_house'] = 'Pulsa ~INPUT_CONTEXT~ para salir de la casa',
@@ -17,7 +17,7 @@ Locales['es'] = {
     ['house_id_menu'] = 'ID de la Casa: ',
     ['house_price_menu'] = 'Precio de la Casa: ',
     ['interior_menu'] = 'Tipo de Casa: ',
-    
+
     -- Buy Menu - Purchase
     ['about_to_buy_house_menu'] = 'Comprar casa ',
     ['about_to_sell_house_menu'] = 'Vender casa ',
@@ -69,4 +69,4 @@ Locales['es'] = {
     ['house_price'] = 'Precio de la casa: ',
     ['create_house'] = 'Confirmar creación de la casa',
     ['house_created'] = 'Has creado correctamente la casa '
-}  
+}

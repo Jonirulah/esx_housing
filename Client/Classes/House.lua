@@ -7,7 +7,7 @@ CreateThread(function()
     end
 
     Wait(500)
-    
+
     local xPlayer = ESX.GetPlayerData()
     identifier = xPlayer.identifier
     loaded_class:resolve()
@@ -27,7 +27,7 @@ CreateHouse = function(data)
     self.data = data.data
     self.storage = data.storage
     self.keys = data.keys
-    self.owner = data.owner 
+    self.owner = data.owner
     self.owned = false
     self.doorpos = vector3(self.data.door.x, self.data.door.y, self.data.door.z-1)
     self.extradata = data.extradata

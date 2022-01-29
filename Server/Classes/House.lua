@@ -56,7 +56,7 @@ CreateHouse = function(data)
 
     self.addKeys = function(identifier)
         if not self.hasKeys(identifier) then
-            -- print("Giving keys to " .. identifier .. ' on house ' .. self.id)    
+            -- print("Giving keys to " .. identifier .. ' on house ' .. self.id)
             table.insert(self.keys, identifier)
             CheckCallback(true, cb)
             self.updateDB = true
@@ -100,7 +100,7 @@ CreateHouse = function(data)
         if self.storage[type] == nil then
             self.storage[type] = {}
         end
-        
+
         if type == 'weapon' then
             table.insert(self.storage[type], data)
             -- print('inserting weapon')
@@ -128,7 +128,7 @@ CreateHouse = function(data)
             -- print('Player ' .. src .. ' joined house #'.. self.id .. ' Total players inside: ' .. tostring(#self.instancedMembers))
         end
     end
-    
+
     self.removeInstancedMember = function(license, cb)
         local xPlayer = ESX.GetPlayerFromIdentifier(license)
         self.extradata.instancedMembers[license] = nil
@@ -143,8 +143,8 @@ CreateHouse = function(data)
             end
         end
     end
-    
-    self.addInvite = function(src, cb) 
+
+    self.addInvite = function(src, cb)
         if not self.pendingInvites[src] then
             local xPlayer = ESX.GetPlayerFromId(src)
             -- print('Added new invite for id: ' .. src)
@@ -175,9 +175,9 @@ CreateHouse = function(data)
         self.money = 0
         self.black_money = 0
         self.extradata.lastTimestamp = {}
-        self.extradata.instancedMembers = {}        
+        self.extradata.instancedMembers = {}
         self.updateDB = true
     end
-    
+
     return self
 end

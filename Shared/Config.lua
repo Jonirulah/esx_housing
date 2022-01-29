@@ -46,16 +46,16 @@ Config.Points = {
 
     motel = {
         storage = vector3(151.32, -1003.32, -100.0),
-        exit = vector3(151.4, -1007.28, -100.0), 
+        exit = vector3(151.4, -1007.28, -100.0),
     },
 }
 
--- House Pricing   
+-- House Pricing
 Config.MaxHousesperUser = 2 -- Limit of houses able to buy from a single user
 Config.MaxKeysperHouse = 5 -- Limit of keys per house
 
 -- Key Pricing
-Config.KeyResetPrice = 1000 -- Price to change the lock and reset 
+Config.KeyResetPrice = 1000 -- Price to change the lock and reset
 Config.KeyCreationPrice = 500 -- Price for keys to be made
 
 -- Sleep Config
@@ -87,5 +87,5 @@ Config.HouseRemovalTypes = { -- hours
 
     motel = {
         maxTime = 168 -- 7d
-    },  
+    },
 }
