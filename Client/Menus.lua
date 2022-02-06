@@ -18,7 +18,7 @@ OpenBuyMenu = function(house)
             {label = Locales[Config.Locale]['buy_house'] .. house.data.price .. "$", value = 'buy_house'}
     }}, function(data, menu)
         menu.close()
-        
+
         if data.current.value == 'house_info' then
             ESX.ShowNotification("<b>" .. Locales[Config.Locale]['view_house_info_menu'] .. "</b><br>" .. Locales[Config.Locale]["house_id_menu"] .. "<i> #" .. house.id .. "</i><br>" .. Locales[Config.Locale]['house_price_menu'] .. "<i>" .. house.data.price .. "$</i><br>" .. Locales[Config.Locale]["interior_menu"] .. "<i>" .. house.data.prop .. "</i>", 5000)
         elseif data.current.value == 'buy_house' then
@@ -49,11 +49,11 @@ OpenBuyMenu = function(house)
                         end
                     end
                 end, function(data, menu)
-                    menu.close()                 
+                    menu.close()
                 end)
         end
     end, function(data, menu)
-        menu.close()                 
+        menu.close()
     end)
 end
 
@@ -96,7 +96,7 @@ OpenAdminHouseMenu = function(house)
                                     end
                                 end
                             end
-                        
+
                         end, house.id)
                     end
                 end, function(data, menu)
@@ -104,7 +104,7 @@ OpenAdminHouseMenu = function(house)
                 end)
 
         elseif data.current.value == "view_invites" then
-            ESX.TriggerServerCallback("esx_housing:GetInvites", function(members) 
+            ESX.TriggerServerCallback("esx_housing:GetInvites", function(members)
                 member_list = {}
                 for k,v in pairs(members) do
                     table.insert(member_list, {
@@ -149,7 +149,7 @@ OpenAdminHouseMenu = function(house)
                             TriggerServerEvent('esx_housing:addKeys', house.id, id)
                             ESX.UI.Menu.CloseAll()
                         end, function(data, menu)
-                            ESX.UI.Menu.CloseAll()    
+                            ESX.UI.Menu.CloseAll()
                         end)
                     end
                 elseif data.current.value == "reset_keys" then
@@ -167,7 +167,7 @@ OpenAdminHouseMenu = function(house)
 
         end
     end, function(data, menu)
-        menu.close()     
+        menu.close()
     end)
 end
 
@@ -179,7 +179,7 @@ OpenNormalHouseMenu = function(house)
             {label = Locales[Config.Locale]['view_invites'], value = 'view_invites'},
     }}, function(data, menu)
     if data.current.value == "view_invites" then
-        ESX.TriggerServerCallback("esx_housing:GetInvites", function(members) 
+        ESX.TriggerServerCallback("esx_housing:GetInvites", function(members)
         end, house.id)
     end
 
@@ -202,10 +202,10 @@ OpenArmoryMenu = function(house)
                     elements = {}
 
                     -- table.insert(elements, {label = "<b>" .. Locales[Config.Locale]["money"] .. "</b>"})
-                    for k,v in pairs(money) do 
+                    for k,v in pairs(money) do
                         table.insert(elements, {item = v.label, label = v.label.." - "..v.money.."$" , type = "account", quantity = v.money, name = v.name})
                     end
-                    
+
                     -- table.insert(elements, {label = "<b>" .. Locales[Config.Locale]["inventory"] .. "</b>"})
                     for k,v in pairs(inventory) do
                         if v.count >= 1 then
@@ -229,11 +229,11 @@ OpenArmoryMenu = function(house)
                     elements = elements
                 }, function(data1, menu1)
                     ActionMenu(data1, house, "deposit")
-                    
+
                 end, function(data, menu)
                     ESX.UI.Menu.CloseAll()
                 end)
-            
+
             elseif data.current.value == "withdraw_items" then
                 ESX.TriggerServerCallback("esx_housing:GetStorage", function(elements)
 
@@ -246,7 +246,7 @@ OpenArmoryMenu = function(house)
                         elements = elements
                     }, function(data1, menu1)
                         ActionMenu(data1, house, "withdraw")
-                        
+
                     end, function(data, menu)
                         ESX.UI.Menu.CloseAll()
                     end)
@@ -256,15 +256,15 @@ OpenArmoryMenu = function(house)
     end, function(data, menu)
 
         ESX.UI.Menu.CloseAll()
-    end)     
+    end)
 end
 
 ActionMenu = function(data1, house, action)
     count = data1.current.quantity
     item = data1.current.item
     if data1.current.type == "item" then
-        ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'house_menu' .. house.id .. 'deposit_value', { 
-        title = Locales[Config.Locale["how_much_money"]], 
+        ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'house_menu' .. house.id .. 'deposit_value', {
+        title = Locales[Config.Locale]["how_much_money"],
         align = "middle",
         elements = ''
         }, function(data2, menu2)
@@ -286,10 +286,10 @@ ActionMenu = function(data1, house, action)
         end, function(data, menu)
             ESX.UI.Menu.CloseAll()
 
-        end)                        
+        end)
     elseif data1.current.type == "account" then
-        ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'house_menu' .. house.id .. 'deposit_value', { 
-            title = Locales[Config.Locale["how_much_money"]], 
+        ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'house_menu' .. house.id .. 'deposit_value', {
+            title = Locales[Config.Locale]["how_much_money"],
             align = "middle",
             elements = elements
             }, function(data2, menu2)
@@ -298,7 +298,7 @@ ActionMenu = function(data1, house, action)
                     ESX.ShowNotification(Locales[Config.Locale]["amount_invalid"])
                 else
                     if count <= data1.current.quantity then
-                        ESX.UI.Menu.CloseAll() 
+                        ESX.UI.Menu.CloseAll()
                         if action == "deposit" then
                             TriggerServerEvent('esx_housing:addItem', data1.current.type, data1.current.name, count, data1.current.item, house.id)
                         elseif action == "withdraw" then
@@ -311,7 +311,7 @@ ActionMenu = function(data1, house, action)
                 end
             end, function(data, menu)
                 ESX.UI.Menu.CloseAll()
-            end)        
+            end)
     elseif data1.current.type == "weapon" then
         if action == "deposit" then
             TriggerServerEvent('esx_housing:addItem', data1.current.type, data1.current.name, count, data1.current.item, house.id)
@@ -323,8 +323,8 @@ ActionMenu = function(data1, house, action)
 end
 
 HouseMaker = function(cur_data)
-    ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'house_builder', { 
-        title = Locales[Config.Locale["house_builder"]], 
+    ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'house_builder', {
+        title = Locales[Config.Locale]["house_builder"],
         align = "bottom-right",
         elements = {
         {label = Locales[Config.Locale]['interior_type'] .. cur_data["interior_type"], value = 'interior_type', data=cur_data["interior_type"]},
@@ -332,45 +332,47 @@ HouseMaker = function(cur_data)
         {label = Locales[Config.Locale]['house_price'] .. cur_data["house_price"], value = 'house_price', data=cur_data["house_price"]},
         {label = Locales[Config.Locale]['create_house'], value = 'create_house'},
         }
-        }, function(data, menu)   
+        }, function(data, menu)
             if data.current.value == "interior_type" then
                 elements = {}
                 for k,v in pairs(Config.Points) do
                     table.insert(elements, {label=k, value=k})
                 end
 
-                ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'house_builder_int', { 
-                    title = Locales[Config.Locale["house_builder"]], 
+                ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'house_builder_int', {
+                    title = Locales[Config.Locale]["house_builder"],
                     align = "bottom-right",
                     elements = elements
-                    }, function(data, menu)
-                        cur_data["interior_type"] = data.current.value
-                        ESX.UI.Menu.CloseAll()
+                    }, function(data2, menu2)
+                        cur_data["interior_type"] = data2.current.value
+                        menu.close()
+                        menu2.close()
                         HouseMaker(cur_data)
 
-                    end, function(data, menu)
-                        ESX.UI.Menu.CloseAll()
-                    end) 
-                        
+                    end, function(data2, menu2)
+                        menu2.close()
+                    end)
+
             elseif data.current.value == "door_coords" then
                 local coords = GetEntityCoords(PlayerPedId())
                 local coords = vector3(coords.x, coords.y, coords.z)
                 current_data["door_coords"] = coords
-                ESX.UI.Menu.CloseAll()
+                menu.close()
                 HouseMaker(cur_data)
 
             elseif data.current.value == "house_price" then
-                ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'house_builder_price', { 
-                    title = Locales[Config.Locale["how_much_money"]], 
+                ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'house_builder_price', {
+                    title = Locales[Config.Locale]["how_much_money"],
                     align = "middle",
                     elements = elements
                     }, function(data2, menu2)
-                        cur_data["house_price"] = tonumber(data2.value)    
-                        ESX.UI.Menu.CloseAll()
+                        cur_data["house_price"] = tonumber(data2.value)
+                        menu.close()
+                        menu2.close()
                         HouseMaker(cur_data)
-                    end, function(data, menu)
-                        ESX.UI.Menu.CloseAll()
-                    end) 
+                    end, function(data2, menu2)
+                        menu2.close()
+                end)
 
             elseif data.current.value == "create_house" then
                 for k,v in pairs(cur_data) do
@@ -381,13 +383,11 @@ HouseMaker = function(cur_data)
                         return
                     end
                 end
-                ESX.UI.Menu.CloseAll()
-                ESX.TriggerServerCallback("esx_housing:NewHouse", function(data) 
+                menu.close()
+                ESX.TriggerServerCallback("esx_housing:NewHouse", function(data)
                     if data then
                         ESX.ShowNotification(Locales[Config.Locale]["house_created"] .. "ID" .. data.id .. "<br>" .. Locales[Config.Locale]["house_price_menu"] .. data.data.price .. "$")
                     end
-                    ESX.UI.Menu.CloseAll()
-
                 end, cur_data)
             end
     end)

@@ -1,9 +1,10 @@
 houses = {}
 loaded = promise.new()
+ESX = nil
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 -- Load ESX & DB
 CreateThread(function()
-    TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
     while MySQL == nil or ESX == nil do
         Wait(0)
     end
@@ -80,10 +81,10 @@ ESX.RegisterServerCallback('esx_housing:SellHouse', function(source, cb, house)
             end
             xPlayer.triggerEvent('esx_housing:leaveHouse')
         end, 'license')
-        houses[house].reset() 
+        houses[house].reset()
         TriggerClientEvent('esx_housing:Sync', -1, houses[house])
         return cb(true)
-    end    
+    end
 end)
 
 ESX.RegisterServerCallback('esx_housing:BuyHouse', function(source, cb, house)
@@ -102,7 +103,7 @@ ESX.RegisterServerCallback('esx_housing:BuyHouse', function(source, cb, house)
     return cb(false)
 end)
 
-ESX.RegisterServerCallback('esx_housing:GetInvites', function(source, cb, houseId) 
+ESX.RegisterServerCallback('esx_housing:GetInvites', function(source, cb, houseId)
     cb(houses[houseId].getPendingInvites())
 end)
 
@@ -138,7 +139,7 @@ ESX.RegisterServerCallback('esx_housing:GetStorage', function(source, cb, houseI
         for k,v in pairs(storage['weapon']) do
             table.insert(elements, {item = v.name, label = v.item .. ' - ' .. v.count .. Locales[Config.Locale]['bullets'], type = 'weapon', quantity = v.count, name = v.name})
         end
-    end 
+    end
 
     return cb(elements)
 end)
@@ -177,7 +178,7 @@ CreateNewHouse = function(data_rcv)
     MySQL.Sync.execute('INSERT INTO housing_data (data) VALUES (@data)', {
         ['@data'] = json.encode(data2.data),
     })
-    
+
     local result = MySQL.Sync.fetchAll("SELECT * FROM housing_data WHERE id=(SELECT max(id) FROM housing_data)")
     houses[result[1].id] = CreateHouse(result[1])
     if Config.Debug and (Config.DebugLevel == 0 or Config.DebugLevel == 2) then
@@ -203,7 +204,7 @@ RegisterNetEvent('esx_housing:addItem', function(type, name, count, item, houseI
                 RemovePlayerItem(xSource, type, name, item, count)
             end
         end, type, name, count, item)
-        houses[houseId].updateDB = true    
+        houses[houseId].updateDB = true
     end
 
 end)

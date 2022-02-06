@@ -4,12 +4,12 @@ loaded = promise.new()
 blips = {}
 view_blips = {}
 local Keys = {
-    ['ESC'] = 322, ['F1'] = 288, ['F2'] = 289, ['F3'] = 170, ['F5'] = 166, ['F6'] = 167, ['F7'] = 168, ['F8'] = 169, ['F9'] = 56, ['F10'] = 57, 
-    ['~'] = 243, ['1'] = 157, ['2'] = 158, ['3'] = 160, ['4'] = 164, ['5'] = 165, ['6'] = 159, ['7'] = 161, ['8'] = 162, ['9'] = 163, ['-'] = 84, ['='] = 83, ['BACKSPACE'] = 177, 
+    ['ESC'] = 322, ['F1'] = 288, ['F2'] = 289, ['F3'] = 170, ['F5'] = 166, ['F6'] = 167, ['F7'] = 168, ['F8'] = 169, ['F9'] = 56, ['F10'] = 57,
+    ['~'] = 243, ['1'] = 157, ['2'] = 158, ['3'] = 160, ['4'] = 164, ['5'] = 165, ['6'] = 159, ['7'] = 161, ['8'] = 162, ['9'] = 163, ['-'] = 84, ['='] = 83, ['BACKSPACE'] = 177,
     ['TAB'] = 37, ['Q'] = 44, ['W'] = 32, ['E'] = 38, ['R'] = 45, ['T'] = 245, ['Y'] = 246, ['U'] = 303, ['P'] = 199, ['['] = 39, [']'] = 40, ['ENTER'] = 18,
     ['CAPS'] = 137, ['A'] = 34, ['S'] = 8, ['D'] = 9, ['F'] = 23, ['G'] = 47, ['H'] = 74, ['K'] = 311, ['L'] = 182,
     ['LEFTSHIFT'] = 21, ['Z'] = 20, ['X'] = 73, ['C'] = 26, ['V'] = 0, ['B'] = 29, ['N'] = 249, ['M'] = 244, [','] = 82, ['.'] = 81,
-    ['LEFTCTRL'] = 36, ['LEFTALT'] = 19, ['SPACE'] = 22, ['RIGHTCTRL'] = 70, 
+    ['LEFTCTRL'] = 36, ['LEFTALT'] = 19, ['SPACE'] = 22, ['RIGHTCTRL'] = 70,
     ['HOME'] = 213, ['PAGEUP'] = 10, ['PAGEDOWN'] = 11, ['DELETE'] = 178,
     ['LEFT'] = 174, ['RIGHT'] = 175, ['TOP'] = 27, ['DOWN'] = 173,
     ['NENTER'] = 201, ['N4'] = 108, ['N5'] = 60, ['N6'] = 107, ['N+'] = 96, ['N-'] = 97, ['N7'] = 117, ['N8'] = 61, ['N9'] = 118
@@ -34,8 +34,8 @@ NewBlip = function(coords, id, owned)
         BeginTextCommandSetBlipName('STRING')
         AddTextComponentSubstringPlayerName(Locales[Config.Locale]['house_marker'] .. ' #' .. id)
         EndTextCommandSetBlipName(blip)
-        table.insert(view_blips, blip) 
-    end       
+        table.insert(view_blips, blip)
+    end
 end
 
 
@@ -78,8 +78,8 @@ InsideHouse = function(house_ins, last_coords)
                 for k,v in pairs(Config.Points[house_ins.data.prop]) do
                     local distance = #(coords - v)
                     if distance < 5 then
-                        DrawMarker(Config.Marker.Type, v, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.Marker.Size.x, Config.Marker.Size.y, Config.Marker.Size.z, Config.Marker.Color.r, 255, Config.Marker.Color.b, 100, false, true, 2, false, false, false, false)      
-                        if distance < 1.5 then   
+                        DrawMarker(Config.Marker.Type, v, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.Marker.Size.x, Config.Marker.Size.y, Config.Marker.Size.z, Config.Marker.Color.r, 255, Config.Marker.Color.b, 100, false, true, 2, false, false, false, false)
+                        if distance < 1.5 then
                             if k == 'exit' then
                                 ESX.ShowHelpNotification(Locales[Config.Locale]['exit_house'])
                                 if IsControlJustPressed(0, 38) then
@@ -137,7 +137,7 @@ CreateThread(function()
                 if Config.Debug and (Config.DebugLevel >= 1) then
                     print('House near to ' .. house_active.id .. ' price ' .. house_active.data.price .. '$' .. ' owner ' .. house_active.owner)
                 end
-                
+
                 local distance = house_active.getdistance(coords)
                 if distance < 1.5 then
                     if house_active.owned or house_active.hasKeys() then
@@ -146,7 +146,7 @@ CreateThread(function()
                         if IsControlJustPressed(0,38) then
                             -- While inside house Thread
                             InsideHouse(house_active, house_active.doorpos)
-                        end                        
+                        end
                     elseif house_active.owner == ('' or "") or not house_active.owner then
                         -- Check Houses
                         ESX.ShowHelpNotification(Locales[Config.Locale]['view_house_info'])
@@ -234,7 +234,7 @@ CreateThread(function()
                 end
             end
         else
-            ESX.Game.Teleport(PlayerPedId(), Houses[k].doorpos)      
+            ESX.Game.Teleport(PlayerPedId(), Houses[k].doorpos)
         end
     end
 end)
