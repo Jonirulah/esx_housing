@@ -15,7 +15,7 @@ This script hasn't been tested on previous versions of ESX, so compatibility is 
 
 - No logging is provided, you should add yours wherever you want to get things logged.
 
-[Personal Note]
+# Personal Note
 Remember that community improvements/PR are what make projects better, if you wanna add something new into esx_housing we can build another branch for that purpose, also thanks to @BlaiseLebreton for his improvement on esx_housing
 
 Due to the fact that I don't own any FiveM server and I don't have the intention to add features to the project (wardrobes, shells, etc) i don't intend to update the script. As I always said forking esx_housing and adding features to it is something that I approve and you are free to do so.
