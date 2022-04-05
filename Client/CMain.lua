@@ -283,7 +283,7 @@ end)
 -- View all not sold houses
 RegisterCommand("createhouse", function()
     ESX.TriggerServerCallback("esx_housing:createHouseMenu", function(permission)
-        if permission == "admin" then
+        if permission == "admin" or permission == "superadmin" then
             current_data = {
                 interior_type = "",
                 door_coords = "",
