@@ -1,7 +1,7 @@
 # esx_housing
 
 Made it for ESX Legacy
-This script hasn't been tested on previous versions of ESX, so compatibility is not assured.
+This script script is also compatible with ESX 1.1
 
 [FEATURES]
 - Players are able to disconnect in their house, at entering the server the house where he stayed in will load automatically.
